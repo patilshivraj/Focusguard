@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option java_package = "com.focusguard.data.proto";
+option java_multiple_files = true;
+
+message FocusGuardSettings {
+  repeated string blocked_packages = 1;
+  optional bool blocking_enabled = 2;
+  bool block_now = 3;
+  repeated ScheduleRuleProto schedules = 4;
+  bool pin_enabled = 5;
+  string pin_hash = 6;
+  string pin_salt = 7;
+  bool diagnostic_verbose_events = 8;
+  bool diagnostic_recording = 9;
+  optional bool blocking_overlay_enabled = 10;
+  optional bool experimental_disable_launcher_entry = 11;
+  repeated BlockGroupProto block_groups = 12;
+}
+
+message ScheduleRuleProto {
+  string id = 1;
+  string package_name = 2;
+  int32 days_of_week = 3;
+  int32 start_minutes = 4;
+  int32 end_minutes = 5;
+  bool always_blocked = 6;
+}
+
+message BlockGroupProto {
+  string id = 1;
+  string name = 2;
+  repeated string package_names = 3;
+  int32 policy_type = 4;
+  bool always_blocked = 5;
+  repeated WeeklyTimeSlotProto weekly_slots = 6;
+  ScreenTimeLimitProto screen_time_limit = 7;
+}
+
+message WeeklyTimeSlotProto {
+  string id = 1;
+  int32 days_of_week = 2;
+  int32 start_minutes = 3;
+  int32 end_minutes = 4;
+}
+
+message ScreenTimeLimitProto {
+  int32 limit_mode = 1;
+  repeated int32 daily_limits_by_day = 2;
+  int32 hourly_limit_minutes = 3;
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FocusGuard</string>
+    <string name="accessibility_service_description">FocusGuard monitors which apps and windows are visible so it can block apps you choose, including floating and multi-window modes. It does not read passwords or typed text.</string>
+</resources>
